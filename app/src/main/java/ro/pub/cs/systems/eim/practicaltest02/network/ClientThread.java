@@ -43,13 +43,15 @@ public class ClientThread extends Thread {
             }
             printWriter.println(pokemonName);
             printWriter.flush();
-            String weatherInformation;
-            while ((weatherInformation = bufferedReader.readLine()) != null) {
-                final String finalizedWeateherInformation = weatherInformation;
+            String information;
+            while ((information = bufferedReader.readLine()) != null) {
+                final String finalizedInformation = information;
+                Log.i(Constants.TAG, "data received on client");
+                Log.i(Constants.TAG, finalizedInformation);
                 weatherForecastTextView.post(new Runnable() {
                    @Override
                     public void run() {
-                       weatherForecastTextView.setText(finalizedWeateherInformation);
+                       weatherForecastTextView.setText(finalizedInformation);
                    }
                 });
             }
